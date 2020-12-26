@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		BF07C51E25979BEF0038EFA8 /* SwiftHamcrest in Frameworks */ = {isa = PBXBuildFile; productRef = BF07C51D25979BEF0038EFA8 /* SwiftHamcrest */; };
+		BF5D09432597BBBA00AE27FE /* Day2Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5D09422597BBBA00AE27FE /* Day2Resources.swift */; };
+		BF5D09482597C9C600AE27FE /* Parsing in Frameworks */ = {isa = PBXBuildFile; productRef = BF5D09472597C9C600AE27FE /* Parsing */; };
+		BF5D094C2597C9DC00AE27FE /* Day2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5D094B2597C9DC00AE27FE /* Day2Tests.swift */; };
+		BF5D09502597CF4400AE27FE /* Parsing in Frameworks */ = {isa = PBXBuildFile; productRef = BF5D094F2597CF4400AE27FE /* Parsing */; };
 		BFE2DDFE25973FD00030ED8E /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE2DDFD25973FD00030ED8E /* main.swift */; };
 		BFE2DE10259740710030ED8E /* Day1Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE2DE0F259740710030ED8E /* Day1Test.swift */; };
 		BFE2DE2725974A170030ED8E /* Day1Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE2DE2625974A170030ED8E /* Day1Resources.swift */; };
@@ -26,6 +30,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		BF5D09422597BBBA00AE27FE /* Day2Resources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Day2Resources.swift; path = resources/Day2Resources.swift; sourceTree = "<group>"; };
+		BF5D094B2597C9DC00AE27FE /* Day2Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day2Tests.swift; sourceTree = "<group>"; };
 		BFE2DDFA25973FD00030ED8E /* adventOfCode2015 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = adventOfCode2015; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFE2DDFD25973FD00030ED8E /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		BFE2DE0D259740710030ED8E /* adventOfCode2015Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = adventOfCode2015Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -39,6 +45,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF5D09482597C9C600AE27FE /* Parsing in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -47,6 +54,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF07C51E25979BEF0038EFA8 /* SwiftHamcrest in Frameworks */,
+				BF5D09502597CF4400AE27FE /* Parsing in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,6 +101,7 @@
 			children = (
 				BFE2DE0F259740710030ED8E /* Day1Test.swift */,
 				BFE2DE11259740710030ED8E /* Info.plist */,
+				BF5D094B2597C9DC00AE27FE /* Day2Tests.swift */,
 			);
 			path = adventOfCode2015Tests;
 			sourceTree = "<group>";
@@ -101,6 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				BFE2DE2625974A170030ED8E /* Day1Resources.swift */,
+				BF5D09422597BBBA00AE27FE /* Day2Resources.swift */,
 			);
 			name = resources;
 			sourceTree = "<group>";
@@ -122,6 +132,7 @@
 			);
 			name = adventOfCode2015;
 			packageProductDependencies = (
+				BF5D09472597C9C600AE27FE /* Parsing */,
 			);
 			productName = adventOfCode2015;
 			productReference = BFE2DDFA25973FD00030ED8E /* adventOfCode2015 */;
@@ -142,6 +153,7 @@
 			name = adventOfCode2015Tests;
 			packageProductDependencies = (
 				BF07C51D25979BEF0038EFA8 /* SwiftHamcrest */,
+				BF5D094F2597CF4400AE27FE /* Parsing */,
 			);
 			productName = adventOfCode2015Tests;
 			productReference = BFE2DE0D259740710030ED8E /* adventOfCode2015Tests.xctest */;
@@ -175,6 +187,7 @@
 			mainGroup = BFE2DDF125973FD00030ED8E;
 			packageReferences = (
 				BF07C51C25979BEF0038EFA8 /* XCRemoteSwiftPackageReference "SwiftHamcrest" */,
+				BF5D09462597C9C600AE27FE /* XCRemoteSwiftPackageReference "swift-parsing" */,
 			);
 			productRefGroup = BFE2DDFB25973FD00030ED8E /* Products */;
 			projectDirPath = "";
@@ -209,6 +222,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF5D09432597BBBA00AE27FE /* Day2Resources.swift in Sources */,
+				BF5D094C2597C9DC00AE27FE /* Day2Tests.swift in Sources */,
 				BFE2DE2725974A170030ED8E /* Day1Resources.swift in Sources */,
 				BFE2DE10259740710030ED8E /* Day1Test.swift in Sources */,
 			);
@@ -425,6 +440,14 @@
 				minimumVersion = 2.2.2;
 			};
 		};
+		BF5D09462597C9C600AE27FE /* XCRemoteSwiftPackageReference "swift-parsing" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-parsing";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -432,6 +455,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = BF07C51C25979BEF0038EFA8 /* XCRemoteSwiftPackageReference "SwiftHamcrest" */;
 			productName = SwiftHamcrest;
+		};
+		BF5D09472597C9C600AE27FE /* Parsing */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF5D09462597C9C600AE27FE /* XCRemoteSwiftPackageReference "swift-parsing" */;
+			productName = Parsing;
+		};
+		BF5D094F2597CF4400AE27FE /* Parsing */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF5D09462597C9C600AE27FE /* XCRemoteSwiftPackageReference "swift-parsing" */;
+			productName = Parsing;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
