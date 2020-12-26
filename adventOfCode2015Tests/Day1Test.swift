@@ -6,13 +6,14 @@
 //
 
 import XCTest
+import SwiftHamcrest
 
 class Day1Test: XCTestCase {
 
-    func testExample() throws {
+    func testPart1() throws {
       let up = day1.map(String.init).filter{ $0 == "(" }.count
       let down = day1.map(String.init).filter{ $0 == ")" }.count
-      XCTAssert(up - down == 280)
+      assertThat(up - down == 280)
     }
 }
 

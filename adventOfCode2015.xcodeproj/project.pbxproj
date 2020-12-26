@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BF07C51E25979BEF0038EFA8 /* SwiftHamcrest in Frameworks */ = {isa = PBXBuildFile; productRef = BF07C51D25979BEF0038EFA8 /* SwiftHamcrest */; };
 		BFE2DDFE25973FD00030ED8E /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE2DDFD25973FD00030ED8E /* main.swift */; };
 		BFE2DE10259740710030ED8E /* Day1Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE2DE0F259740710030ED8E /* Day1Test.swift */; };
 		BFE2DE2725974A170030ED8E /* Day1Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE2DE2625974A170030ED8E /* Day1Resources.swift */; };
@@ -45,12 +46,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF07C51E25979BEF0038EFA8 /* SwiftHamcrest in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BF07C52125979DB20038EFA8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		BFE2DDF125973FD00030ED8E = {
 			isa = PBXGroup;
 			children = (
@@ -58,6 +67,7 @@
 				BFE2DDFC25973FD00030ED8E /* adventOfCode2015 */,
 				BFE2DE0E259740710030ED8E /* adventOfCode2015Tests */,
 				BFE2DDFB25973FD00030ED8E /* Products */,
+				BF07C52125979DB20038EFA8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -111,6 +121,8 @@
 			dependencies = (
 			);
 			name = adventOfCode2015;
+			packageProductDependencies = (
+			);
 			productName = adventOfCode2015;
 			productReference = BFE2DDFA25973FD00030ED8E /* adventOfCode2015 */;
 			productType = "com.apple.product-type.tool";
@@ -128,6 +140,9 @@
 			dependencies = (
 			);
 			name = adventOfCode2015Tests;
+			packageProductDependencies = (
+				BF07C51D25979BEF0038EFA8 /* SwiftHamcrest */,
+			);
 			productName = adventOfCode2015Tests;
 			productReference = BFE2DE0D259740710030ED8E /* adventOfCode2015Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -158,6 +173,9 @@
 				Base,
 			);
 			mainGroup = BFE2DDF125973FD00030ED8E;
+			packageReferences = (
+				BF07C51C25979BEF0038EFA8 /* XCRemoteSwiftPackageReference "SwiftHamcrest" */,
+			);
 			productRefGroup = BFE2DDFB25973FD00030ED8E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -397,6 +415,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		BF07C51C25979BEF0038EFA8 /* XCRemoteSwiftPackageReference "SwiftHamcrest" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/nschum/SwiftHamcrest";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.2.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		BF07C51D25979BEF0038EFA8 /* SwiftHamcrest */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF07C51C25979BEF0038EFA8 /* XCRemoteSwiftPackageReference "SwiftHamcrest" */;
+			productName = SwiftHamcrest;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = BFE2DDF225973FD00030ED8E /* Project object */;
 }
