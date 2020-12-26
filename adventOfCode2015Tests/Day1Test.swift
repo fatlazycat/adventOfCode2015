@@ -10,8 +10,9 @@ import XCTest
 class Day1Test: XCTestCase {
 
     func testExample() throws {
-        let d1 = day1Part2.lines
-        print(day1Part2)
+      let up = day1.map(String.init).filter{ $0 == "(" }.count
+      let down = day1.map(String.init).filter{ $0 == ")" }.count
+      XCTAssert(up - down == 280)
     }
 }
 
