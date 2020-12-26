@@ -8,7 +8,7 @@
 import XCTest
 import SwiftHamcrest
 
-class Day1Test: XCTestCase {
+class Day1Tests: XCTestCase {
 
     func testPart1() throws {
       let up = day1.map(String.init).filter{ $0 == "(" }.count
