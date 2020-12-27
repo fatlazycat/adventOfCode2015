@@ -28,8 +28,8 @@ extension Array {
     return dict
   }
   
-  public func groupBy<Key>(by keyForValue: (S.Element) throws -> Key) rethrows where Key : Hashable {
-    return Dictionary(grouping: self, by: keyForValue)
+  public func groupBy<Key: Hashable>(by keyForValue: (Self.Element) throws -> Key) rethrows -> Dictionary<Key, [Element]> {
+    return try Dictionary(grouping: self, by: keyForValue)
   }
   
   /**

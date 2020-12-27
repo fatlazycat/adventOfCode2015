@@ -35,7 +35,7 @@ class Day3Test: XCTestCase {
   
   func testPart1() throws {
     let presents = getPath(path: day3)
-    let mappedLocations = Dictionary(grouping: presents.count, by: {$0})
+    let mappedLocations = presents.count.groupBy(by: {$0})
     
     assertThat(mappedLocations.keys.count == 2565)
   }
@@ -45,7 +45,7 @@ class Day3Test: XCTestCase {
     let robotSantaPath = String(stride(from: 1, to: day3.count, by: 2).map { day3[$0] })
     let santaPresents = getPath(path: santaPath)
     let robotSantaPresents = getPath(path: robotSantaPath)
-    let mappedLocations = Dictionary(grouping: santaPresents.count + robotSantaPresents.count, by: {$0})
+    let mappedLocations = (santaPresents.count + robotSantaPresents.count).groupBy(by: {$0})
     
     assertThat(mappedLocations.keys.count == 2639)
   }
