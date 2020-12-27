@@ -41,8 +41,8 @@ class Day3Test: XCTestCase {
   }
   
   func testPart2() throws {
-    let santaPath = String(stride(from: 0, to: day3.count, by: 2).map { day3[$0] })
-    let robotSantaPath = String(stride(from: 1, to: day3.count, by: 2).map { day3[$0] })
+    let santaPath = stride(from: 0, to: day3.count, by: 2).map { day3[$0] }.toString()
+    let robotSantaPath = stride(from: 1, to: day3.count, by: 2).map { day3[$0] }.toString()
     let santaPresents = getPath(path: santaPath)
     let robotSantaPresents = getPath(path: robotSantaPath)
     let mappedLocations = (santaPresents.count + robotSantaPresents.count).groupBy(by: {$0})

@@ -32,6 +32,10 @@ extension Array {
     return try Dictionary(grouping: self, by: keyForValue)
   }
   
+  public func toString() -> String where Self.Element == Character {
+    return String(self)
+  }
+  
   /**
    Attempt to convert a tuple into an Array.
    
