@@ -29,14 +29,3 @@ class Day1Tests: XCTestCase {
     }
 }
 
-extension String {
-    var lines: [String] {
-        return self.components(separatedBy: "\n")
-    }
-}
-
-extension StringProtocol {
-    subscript(offset: Int) -> Character {
-        self[index(startIndex, offsetBy: offset)]
-    }
-}
