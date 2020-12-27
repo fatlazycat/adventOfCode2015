@@ -20,6 +20,18 @@ import Foundation
 
 extension Array {
   
+  public func toDictionary<Key: Hashable>(with selectKey: (Element) -> Key) -> [Key:Element] {
+    var dict = [Key:Element]()
+    for element in self {
+      dict[selectKey(element)] = element
+    }
+    return dict
+  }
+  
+  public func groupBy<Key>(by keyForValue: (S.Element) throws -> Key) rethrows where Key : Hashable {
+    return Dictionary(grouping: self, by: keyForValue)
+  }
+  
   /**
    Attempt to convert a tuple into an Array.
    

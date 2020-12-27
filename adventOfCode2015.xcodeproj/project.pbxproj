@@ -112,8 +112,8 @@
 		BFE2DE0E259740710030ED8E /* adventOfCode2015Tests */ = {
 			isa = PBXGroup;
 			children = (
-				BFE2DE0F259740710030ED8E /* Day1Tests.swift */,
 				BFE2DE11259740710030ED8E /* Info.plist */,
+				BFE2DE0F259740710030ED8E /* Day1Tests.swift */,
 				BF5D094B2597C9DC00AE27FE /* Day2Tests.swift */,
 				BF5D096125989D8700AE27FE /* Day3Tests.swift */,
 			);
