@@ -1,8 +1,4 @@
 /**
- # Tuple-to-array for Swift
- 
- By Ethan McTague - January 28, 2020
- This source code is in the public domain.
  
  ## Example
  
