@@ -6,16 +6,19 @@
 //
 
 import Foundation
-import CommonCrypto
 
 extension String {
-    var lines: [String] {
-        return self.components(separatedBy: "\n")
-    }
+  var lines: [String] {
+    return self.components(separatedBy: "\n")
+  }
+  
+  func toCharArray() -> [Character] {
+    return Array(self)
+  }
 }
 
 extension StringProtocol {
-    subscript(offset: Int) -> Character {
-        self[index(startIndex, offsetBy: offset)]
-    }
+  subscript(offset: Int) -> Character {
+    self[index(startIndex, offsetBy: offset)]
+  }
 }
