@@ -26,6 +26,7 @@
 		BF9CB7C92597D20200D86008 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9CB7C72597D20200D86008 /* StringExtensions.swift */; };
 		BFD2E5D3259FD0DD000764D8 /* Day5Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD2E5D2259FD0DD000764D8 /* Day5Resources.swift */; };
 		BFD2E5D725A07D5E000764D8 /* Day5Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD2E5D625A07D5E000764D8 /* Day5Tests.swift */; };
+		BFD2E5DB25A254D3000764D8 /* Day6Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD2E5DA25A254D3000764D8 /* Day6Resources.swift */; };
 		BFE2DDFE25973FD00030ED8E /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE2DDFD25973FD00030ED8E /* main.swift */; };
 		BFE2DE10259740710030ED8E /* Day1Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE2DE0F259740710030ED8E /* Day1Tests.swift */; };
 		BFE2DE2725974A170030ED8E /* Day1Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE2DE2625974A170030ED8E /* Day1Resources.swift */; };
@@ -55,6 +56,7 @@
 		BF9CB7C72597D20200D86008 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		BFD2E5D2259FD0DD000764D8 /* Day5Resources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Day5Resources.swift; path = resources/Day5Resources.swift; sourceTree = "<group>"; };
 		BFD2E5D625A07D5E000764D8 /* Day5Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day5Tests.swift; sourceTree = "<group>"; };
+		BFD2E5DA25A254D3000764D8 /* Day6Resources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Day6Resources.swift; path = resources/Day6Resources.swift; sourceTree = "<group>"; };
 		BFE2DDFA25973FD00030ED8E /* adventOfCode2015 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = adventOfCode2015; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFE2DDFD25973FD00030ED8E /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		BFE2DE0D259740710030ED8E /* adventOfCode2015Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = adventOfCode2015Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -143,6 +145,7 @@
 				BF5D09422597BBBA00AE27FE /* Day2Resources.swift */,
 				BF5D095C25989AF100AE27FE /* Day3Resources.swift */,
 				BFD2E5D2259FD0DD000764D8 /* Day5Resources.swift */,
+				BFD2E5DA25A254D3000764D8 /* Day6Resources.swift */,
 			);
 			name = resources;
 			sourceTree = "<group>";
@@ -268,6 +271,7 @@
 				BFE2DE2725974A170030ED8E /* Day1Resources.swift in Sources */,
 				BF5D096225989D8700AE27FE /* Day3Tests.swift in Sources */,
 				BFE2DE10259740710030ED8E /* Day1Tests.swift in Sources */,
+				BFD2E5DB25A254D3000764D8 /* Day6Resources.swift in Sources */,
 				BFD2E5D3259FD0DD000764D8 /* Day5Resources.swift in Sources */,
 				BF8617DE2599E9B80087DA7C /* String+Crypto.swift in Sources */,
 				BF8617E52599EA800087DA7C /* Data+Crypto.swift in Sources */,
