@@ -33,7 +33,6 @@ class Day6Test: XCTestCase {
     .take(Int.parser())
     .map{ InstructionData(instruction: $0, lower: Point($1,$2), upper: Point($3,$4)) }
   
-  
   func testPart1() throws {
     let data = day6.lines.map{ instructionParser.parse($0)! }
     assertThat(numberLit(data: data) == 569999)
