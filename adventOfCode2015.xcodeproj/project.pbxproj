@@ -18,6 +18,7 @@
 		BF5D095E25989AF100AE27FE /* Day3Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5D095C25989AF100AE27FE /* Day3Resources.swift */; };
 		BF5D096225989D8700AE27FE /* Day3Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5D096125989D8700AE27FE /* Day3Tests.swift */; };
 		BF667A7125AA0F8100B4740A /* Day6Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF667A7025AA0F8100B4740A /* Day6Tests.swift */; };
+		BF667A7525AB323B00B4740A /* Day7Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF667A7425AB323B00B4740A /* Day7Resources.swift */; };
 		BF8617D92599E8020087DA7C /* Day4Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8617D82599E8020087DA7C /* Day4Tests.swift */; };
 		BF8617DD2599E9B80087DA7C /* String+Crypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8617DC2599E9B80087DA7C /* String+Crypto.swift */; };
 		BF8617DE2599E9B80087DA7C /* String+Crypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8617DC2599E9B80087DA7C /* String+Crypto.swift */; };
@@ -52,6 +53,7 @@
 		BF5D095C25989AF100AE27FE /* Day3Resources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Day3Resources.swift; path = resources/Day3Resources.swift; sourceTree = "<group>"; };
 		BF5D096125989D8700AE27FE /* Day3Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day3Tests.swift; sourceTree = "<group>"; };
 		BF667A7025AA0F8100B4740A /* Day6Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day6Tests.swift; sourceTree = "<group>"; };
+		BF667A7425AB323B00B4740A /* Day7Resources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Day7Resources.swift; path = resources/Day7Resources.swift; sourceTree = "<group>"; };
 		BF8617D82599E8020087DA7C /* Day4Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day4Tests.swift; sourceTree = "<group>"; };
 		BF8617DC2599E9B80087DA7C /* String+Crypto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Crypto.swift"; sourceTree = "<group>"; };
 		BF8617E32599EA800087DA7C /* Data+Crypto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Crypto.swift"; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 				BF5D095C25989AF100AE27FE /* Day3Resources.swift */,
 				BFD2E5D2259FD0DD000764D8 /* Day5Resources.swift */,
 				BFD2E5DA25A254D3000764D8 /* Day6Resources.swift */,
+				BF667A7425AB323B00B4740A /* Day7Resources.swift */,
 			);
 			name = resources;
 			sourceTree = "<group>";
@@ -279,6 +282,7 @@
 				BFD2E5D3259FD0DD000764D8 /* Day5Resources.swift in Sources */,
 				BF8617DE2599E9B80087DA7C /* String+Crypto.swift in Sources */,
 				BF8617E52599EA800087DA7C /* Data+Crypto.swift in Sources */,
+				BF667A7525AB323B00B4740A /* Day7Resources.swift in Sources */,
 				BF8617D92599E8020087DA7C /* Day4Tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
