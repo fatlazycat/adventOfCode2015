@@ -8,11 +8,11 @@ class Day7Test: XCTestCase {
     case Left(A)
     case Right(B)
     
-    func from(a: A) -> Either {
+    static func from(_ a: A) -> Either {
       return .Left(a)
     }
     
-    func from(b: B) -> Either {
+    static func from(_ b: B) -> Either {
       return .Right(b)
     }
   }
@@ -66,16 +66,12 @@ class Day7Test: XCTestCase {
     .skip(StartsWith(" -> "))
     .take(Rest())
     .map{ Logic.OR(gateOne: String($0), gateTwo: String($1), to: String($2)) }
-  
-  let passThroughLeftParser = Prefix<Substring>(while: { $0.isLetter })
+    
+  let passThroughParser = Int.parser().map{ Either.Right($0) }
+    .orElse(Prefix<Substring>(while: { $0.isLetter }).map{ Either.Left(String($0)) })
     .skip(StartsWith(" -> "))
     .take(Rest())
-    .map{ Logic.PASSTHROUGH(from: .Left(String($0)), to: String($1)) }
-  
-  let passThroughRightParser = Int.parser()
-    .skip(StartsWith(" -> "))
-    .take(Rest())
-    .map{ Logic.PASSTHROUGH(from: .Right($0), to: String($1)) }
+    .map{ Logic.PASSTHROUGH(from: $0, to: String($1)) }
   
   func testNotParser() throws {
     assertThat(notParser.parse("NOT jd -> je") == Logic.NOT(from: "jd", to: "je"))
@@ -102,11 +98,11 @@ class Day7Test: XCTestCase {
   }
   
   func testPassThroughLeftParser() throws {
-    assertThat(passThroughLeftParser.parse("lx -> a") == Logic.PASSTHROUGH(from: .Left("lx"), to: "a"))
+    assertThat(passThroughParser.parse("lx -> a") == Logic.PASSTHROUGH(from: .Left("lx"), to: "a"))
   }
   
   func testPassThroughRightParser() throws {
-    assertThat(passThroughRightParser.parse("1 -> b") == Logic.PASSTHROUGH(from: .Right(1), to: "b"))
+    assertThat(passThroughParser.parse("1 -> b") == Logic.PASSTHROUGH(from: .Right(1), to: "b"))
   }
   
   func testPart1() throws {
@@ -116,8 +112,7 @@ class Day7Test: XCTestCase {
       .orElse(andParser)
       .orElse(oneAndParser)
       .orElse(orParser)
-      .orElse(passThroughLeftParser)
-      .orElse(passThroughRightParser)
+      .orElse(passThroughParser)
     
     let data = day7.lines.map{ logicParser.parse($0)! }
     print(data[0])
