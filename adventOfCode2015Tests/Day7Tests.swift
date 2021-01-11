@@ -21,8 +21,7 @@ class Day7Test: XCTestCase {
     case NOT(from: String, to: String)
     case LSHIFT(from: String, to: String, shift: Int)
     case RSHIFT(from: String, to: String, shift: Int)
-    case AND(gateOne: String, gateTwo: String, to: String)
-    case ONE_AND(gateTwo: String, to: String)
+    case AND(gateOne: Either<String, Int>, gateTwo: String, to: String)
     case OR(gateOne: String, gateTwo: String, to: String)
     case PASSTHROUGH(from: Either<String, Int>, to: String)
   }
@@ -47,18 +46,13 @@ class Day7Test: XCTestCase {
     .take(Rest())
     .map{ Logic.RSHIFT(from: String($0), to: String($2), shift: $1) }
   
-  let andParser = Prefix<Substring>(while: { $0.isLetter })
+  let andParser = Int.parser().map{ Either.Right($0) }
+    .orElse(Prefix<Substring>(while: { $0.isLetter }).map{ Either.Left(String($0)) })
     .skip(StartsWith(" AND "))
     .take(Prefix(while: { $0.isLetter }))
     .skip(StartsWith(" -> "))
     .take(Rest())
-    .map{ Logic.AND(gateOne: String($0), gateTwo: String($1), to: String($2)) }
-  
-  let oneAndParser = Skip(PrefixThrough<Substring>("1 AND "))
-    .take(Prefix(while: { $0.isLetter }))
-    .skip(StartsWith(" -> "))
-    .take(Rest())
-    .map{ Logic.ONE_AND(gateTwo: String($0), to: String($1)) }
+    .map{ Logic.AND(gateOne: $0, gateTwo: String($1), to: String($2)) }
   
   let orParser = Prefix<Substring>(while: { $0.isLetter })
     .skip(StartsWith(" OR "))
@@ -86,22 +80,22 @@ class Day7Test: XCTestCase {
   }
   
   func testAndParser() throws {
-    assertThat(andParser.parse("ih AND ij -> ik") == Logic.AND(gateOne: "ih", gateTwo: "ij", to: "ik"))
+    assertThat(andParser.parse("ih AND ij -> ik") == Logic.AND(gateOne: .Left("ih"), gateTwo: "ij", to: "ik"))
   }
   
   func testOneAndParser() throws {
-    assertThat(oneAndParser.parse("1 AND jj -> jk") == Logic.ONE_AND(gateTwo: "jj", to: "jk"))
+    assertThat(andParser.parse("1 AND jj -> jk") == Logic.AND(gateOne: .Right(1), gateTwo: "jj", to: "jk"))
   }
   
   func testOrParser() throws {
     assertThat(orParser.parse("t OR s -> u") == Logic.OR(gateOne: "t", gateTwo: "s", to: "u"))
   }
   
-  func testPassThroughLeftParser() throws {
+  func testPassThroughGateParser() throws {
     assertThat(passThroughParser.parse("lx -> a") == Logic.PASSTHROUGH(from: .Left("lx"), to: "a"))
   }
   
-  func testPassThroughRightParser() throws {
+  func testPassThroughNumberParser() throws {
     assertThat(passThroughParser.parse("1 -> b") == Logic.PASSTHROUGH(from: .Right(1), to: "b"))
   }
   
@@ -110,7 +104,6 @@ class Day7Test: XCTestCase {
       .orElse(leftShiftParser)
       .orElse(rightShiftParser)
       .orElse(andParser)
-      .orElse(oneAndParser)
       .orElse(orParser)
       .orElse(passThroughParser)
     
