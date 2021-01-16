@@ -4,39 +4,6 @@ import Parsing
 import Foundation
 
 class Day7Test: XCTestCase {
-  enum Either<A, B>: Equatable where A: Equatable, B: Equatable {
-    case Left(A)
-    case Right(B)
-    
-    static func from(_ a: A) -> Either {
-      return .Left(a)
-    }
-    
-    static func from(_ b: B) -> Either {
-      return .Right(b)
-    }
-  }
-  
-  enum Logic: Equatable {
-    case NOT(from: String, to: String)
-    case LSHIFT(from: String, to: String, shift: Int)
-    case RSHIFT(from: String, to: String, shift: Int)
-    case AND(gateOne: Either<String, UInt16>, gateTwo: String, to: String)
-    case OR(gateOne: String, gateTwo: String, to: String)
-    case PASSTHROUGH(from: Either<String, UInt16>, to: String)
-    
-    func toGate() -> String {
-      switch self {
-      case .NOT(from: _, to: let to): return to
-      case .LSHIFT(from: _, to: let to, shift: _): return to
-      case .RSHIFT(from: _, to: let to, shift: _): return to
-      case .AND(gateOne: _, gateTwo: _, to: let to): return to
-      case .OR(gateOne: _, gateTwo: _, to: let to): return to
-      case .PASSTHROUGH(from: _, to: let to): return to
-      }
-    }
-  }
-  
   let notParser = Skip(PrefixThrough<Substring>("NOT "))
     .take(Prefix(while: { $0.isLetter }))
     .skip(StartsWith(" -> "))
@@ -120,14 +87,14 @@ class Day7Test: XCTestCase {
     
     let data = day7test.lines.map{ logicParser.parse($0)! }
     let outputGates = data.toDictionary{ $0.toGate() }
-    assertThat(resultForGate(gate: "d", gates: outputGates), equalTo(72))
-    assertThat(resultForGate(gate: "e", gates: outputGates), equalTo(507))
-    assertThat(resultForGate(gate: "f", gates: outputGates), equalTo(492))
-    assertThat(resultForGate(gate: "g", gates: outputGates), equalTo(114))
-    assertThat(resultForGate(gate: "h", gates: outputGates), equalTo(65412))
-    assertThat(resultForGate(gate: "i", gates: outputGates), equalTo(65079))
-    assertThat(resultForGate(gate: "x", gates: outputGates), equalTo(123))
-    assertThat(resultForGate(gate: "y", gates: outputGates), equalTo(456))
+    assertThat(LogicGateCalc().resultForGate(gate: "d", gates: outputGates), equalTo(72))
+    assertThat(LogicGateCalc().resultForGate(gate: "e", gates: outputGates), equalTo(507))
+    assertThat(LogicGateCalc().resultForGate(gate: "f", gates: outputGates), equalTo(492))
+    assertThat(LogicGateCalc().resultForGate(gate: "g", gates: outputGates), equalTo(114))
+    assertThat(LogicGateCalc().resultForGate(gate: "h", gates: outputGates), equalTo(65412))
+    assertThat(LogicGateCalc().resultForGate(gate: "i", gates: outputGates), equalTo(65079))
+    assertThat(LogicGateCalc().resultForGate(gate: "x", gates: outputGates), equalTo(123))
+    assertThat(LogicGateCalc().resultForGate(gate: "y", gates: outputGates), equalTo(456))
   }
   
   func testPart1() throws {
@@ -140,12 +107,54 @@ class Day7Test: XCTestCase {
     
     let data = day7.lines.map{ logicParser.parse($0)! }
     let outputGates = data.toDictionary{ $0.toGate() }
-    let result = resultForGate(gate: "h", gates: outputGates)
-    print("result = \(result)")
+    let result = LogicGateCalc().resultForGate(gate: "a", gates: outputGates)
+    assertThat(result, equalTo(46065))
   }
+}
+
+enum Either<A, B>: Equatable where A: Equatable, B: Equatable {
+  case Left(A)
+  case Right(B)
+  
+  static func from(_ a: A) -> Either {
+    return .Left(a)
+  }
+  
+  static func from(_ b: B) -> Either {
+    return .Right(b)
+  }
+}
+
+enum Logic: Equatable {
+  case NOT(from: String, to: String)
+  case LSHIFT(from: String, to: String, shift: Int)
+  case RSHIFT(from: String, to: String, shift: Int)
+  case AND(gateOne: Either<String, UInt16>, gateTwo: String, to: String)
+  case OR(gateOne: String, gateTwo: String, to: String)
+  case PASSTHROUGH(from: Either<String, UInt16>, to: String)
+  
+  func toGate() -> String {
+    switch self {
+    case .NOT(from: _, to: let to): return to
+    case .LSHIFT(from: _, to: let to, shift: _): return to
+    case .RSHIFT(from: _, to: let to, shift: _): return to
+    case .AND(gateOne: _, gateTwo: _, to: let to): return to
+    case .OR(gateOne: _, gateTwo: _, to: let to): return to
+    case .PASSTHROUGH(from: _, to: let to): return to
+    }
+  }
+}
+
+class LogicGateCalc {
+  private var memo: Dictionary<String, UInt16> = Dictionary()
   
   func resultForGate(gate: String, gates: Dictionary<String, Logic>) -> UInt16 {
     let logicGate = gates[gate]!
+    
+    if let memo = memo[gate] {
+      return memo
+    }
+    
     let result: UInt16
     
     switch logicGate {
@@ -166,6 +175,8 @@ class Day7Test: XCTestCase {
     case .PASSTHROUGH(Either<String, UInt16>.Right(from: let from), to: _):
       result = from
     }
+    
+    memo[gate] = result
     
     return result
   }
