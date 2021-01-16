@@ -21,9 +21,20 @@ class Day7Test: XCTestCase {
     case NOT(from: String, to: String)
     case LSHIFT(from: String, to: String, shift: Int)
     case RSHIFT(from: String, to: String, shift: Int)
-    case AND(gateOne: Either<String, Int>, gateTwo: String, to: String)
+    case AND(gateOne: Either<String, UInt16>, gateTwo: String, to: String)
     case OR(gateOne: String, gateTwo: String, to: String)
-    case PASSTHROUGH(from: Either<String, Int>, to: String)
+    case PASSTHROUGH(from: Either<String, UInt16>, to: String)
+    
+    func toGate() -> String {
+      switch self {
+      case .NOT(from: _, to: let to): return to
+      case .LSHIFT(from: _, to: let to, shift: _): return to
+      case .RSHIFT(from: _, to: let to, shift: _): return to
+      case .AND(gateOne: _, gateTwo: _, to: let to): return to
+      case .OR(gateOne: _, gateTwo: _, to: let to): return to
+      case .PASSTHROUGH(from: _, to: let to): return to
+      }
+    }
   }
   
   let notParser = Skip(PrefixThrough<Substring>("NOT "))
@@ -46,7 +57,7 @@ class Day7Test: XCTestCase {
     .take(Rest())
     .map{ Logic.RSHIFT(from: String($0), to: String($2), shift: $1) }
   
-  let andParser = Int.parser().map{ Either.Right($0) }
+  let andParser = Int.parser().map{ Either.Right(UInt16($0)) }
     .orElse(Prefix<Substring>(while: { $0.isLetter }).map{ Either.Left(String($0)) })
     .skip(StartsWith(" AND "))
     .take(Prefix(while: { $0.isLetter }))
@@ -61,7 +72,7 @@ class Day7Test: XCTestCase {
     .take(Rest())
     .map{ Logic.OR(gateOne: String($0), gateTwo: String($1), to: String($2)) }
     
-  let passThroughParser = Int.parser().map{ Either.Right($0) }
+  let passThroughParser = Int.parser().map{ Either.Right(UInt16($0)) }
     .orElse(Prefix<Substring>(while: { $0.isLetter }).map{ Either.Left(String($0)) })
     .skip(StartsWith(" -> "))
     .take(Rest())
@@ -98,6 +109,26 @@ class Day7Test: XCTestCase {
   func testPassThroughNumberParser() throws {
     assertThat(passThroughParser.parse("1 -> b") == Logic.PASSTHROUGH(from: .Right(1), to: "b"))
   }
+
+  func testPart1testdata() throws {
+    let logicParser = notParser
+      .orElse(leftShiftParser)
+      .orElse(rightShiftParser)
+      .orElse(andParser)
+      .orElse(orParser)
+      .orElse(passThroughParser)
+    
+    let data = day7test.lines.map{ logicParser.parse($0)! }
+    let outputGates = data.toDictionary{ $0.toGate() }
+    assertThat(resultForGate(gate: "d", gates: outputGates), equalTo(72))
+    assertThat(resultForGate(gate: "e", gates: outputGates), equalTo(507))
+    assertThat(resultForGate(gate: "f", gates: outputGates), equalTo(492))
+    assertThat(resultForGate(gate: "g", gates: outputGates), equalTo(114))
+    assertThat(resultForGate(gate: "h", gates: outputGates), equalTo(65412))
+    assertThat(resultForGate(gate: "i", gates: outputGates), equalTo(65079))
+    assertThat(resultForGate(gate: "x", gates: outputGates), equalTo(123))
+    assertThat(resultForGate(gate: "y", gates: outputGates), equalTo(456))
+  }
   
   func testPart1() throws {
     let logicParser = notParser
@@ -108,8 +139,34 @@ class Day7Test: XCTestCase {
       .orElse(passThroughParser)
     
     let data = day7.lines.map{ logicParser.parse($0)! }
-    print(data[0])
-    print(data[1])
-    print(data[2])
+    let outputGates = data.toDictionary{ $0.toGate() }
+    let result = resultForGate(gate: "h", gates: outputGates)
+    print("result = \(result)")
+  }
+  
+  func resultForGate(gate: String, gates: Dictionary<String, Logic>) -> UInt16 {
+    let logicGate = gates[gate]!
+    let result: UInt16
+    
+    switch logicGate {
+    case .NOT(from: let from, to: _):
+      result = ~resultForGate(gate: from, gates: gates)
+    case .LSHIFT(from: let from, to: _, shift: let shift):
+      result = resultForGate(gate: from, gates: gates) << shift
+    case .RSHIFT(from: let from, to: _, shift: let shift):
+      result = resultForGate(gate: from, gates: gates) >> shift
+    case .AND(Either<String, UInt16>.Left(gateOne: let gateOne), gateTwo: let gateTwo, to: _):
+      result = resultForGate(gate: gateOne, gates: gates) & resultForGate(gate: gateTwo, gates: gates)
+    case .AND(Either<String, UInt16>.Right(gateOne: let gateOne), gateTwo: let gateTwo, to: _):
+      result = gateOne & resultForGate(gate: gateTwo, gates: gates)
+    case .OR(gateOne: let gateOne, gateTwo: let gateTwo, to: _):
+      result = resultForGate(gate: gateOne, gates: gates) | resultForGate(gate: gateTwo, gates: gates)
+    case .PASSTHROUGH(Either<String, UInt16>.Left(from: let from), to: _):
+      result = resultForGate(gate: from, gates: gates)
+    case .PASSTHROUGH(Either<String, UInt16>.Right(from: let from), to: _):
+      result = from
+    }
+    
+    return result
   }
 }
