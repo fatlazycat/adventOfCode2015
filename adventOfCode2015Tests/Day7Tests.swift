@@ -110,6 +110,22 @@ class Day7Test: XCTestCase {
     let result = LogicGateCalc().resultForGate(gate: "a", gates: outputGates)
     assertThat(result, equalTo(46065))
   }
+  
+  func testPart2() throws {
+    let logicParser = notParser
+      .orElse(leftShiftParser)
+      .orElse(rightShiftParser)
+      .orElse(andParser)
+      .orElse(orParser)
+      .orElse(passThroughParser)
+    
+    let data = day7.lines.map{ logicParser.parse($0)! }
+    var outputGates = data.toDictionary{ $0.toGate() }
+    outputGates.updateValue(.PASSTHROUGH(from: Either.Right(46065), to: "b"), forKey: "b")
+    
+    let result = LogicGateCalc().resultForGate(gate: "a", gates: outputGates)
+    assertThat(result, equalTo(14134))
+  }
 }
 
 enum Either<A, B>: Equatable where A: Equatable, B: Equatable {
