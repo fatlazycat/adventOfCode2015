@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		BF07C51E25979BEF0038EFA8 /* SwiftHamcrest in Frameworks */ = {isa = PBXBuildFile; productRef = BF07C51D25979BEF0038EFA8 /* SwiftHamcrest */; };
+		BF379AED25D1CAAD008A1DC9 /* Day8ResourcesTest.txt in Resources */ = {isa = PBXBuildFile; fileRef = BF379AEC25D1CAAD008A1DC9 /* Day8ResourcesTest.txt */; };
 		BF5D09432597BBBA00AE27FE /* Day2Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5D09422597BBBA00AE27FE /* Day2Resources.swift */; };
 		BF5D09482597C9C600AE27FE /* Parsing in Frameworks */ = {isa = PBXBuildFile; productRef = BF5D09472597C9C600AE27FE /* Parsing */; };
 		BF5D094C2597C9DC00AE27FE /* Day2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5D094B2597C9DC00AE27FE /* Day2Tests.swift */; };
@@ -50,6 +51,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		BF379AEC25D1CAAD008A1DC9 /* Day8ResourcesTest.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = Day8ResourcesTest.txt; path = resources/Day8ResourcesTest.txt; sourceTree = "<group>"; };
 		BF5D09422597BBBA00AE27FE /* Day2Resources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Day2Resources.swift; path = resources/Day2Resources.swift; sourceTree = "<group>"; };
 		BF5D094B2597C9DC00AE27FE /* Day2Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day2Tests.swift; sourceTree = "<group>"; };
 		BF5D095525987DE300AE27FE /* ArrayExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtensions.swift; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 				BFD2E5DA25A254D3000764D8 /* Day6Resources.swift */,
 				BF667A7425AB323B00B4740A /* Day7Resources.swift */,
 				BFB984F925C6F8F700C7FEC1 /* Day8Resources.txt */,
+				BF379AEC25D1CAAD008A1DC9 /* Day8ResourcesTest.txt */,
 			);
 			name = resources;
 			sourceTree = "<group>";
@@ -254,6 +257,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF379AED25D1CAAD008A1DC9 /* Day8ResourcesTest.txt in Resources */,
 				BFB984FA25C6F8F700C7FEC1 /* Day8Resources.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
